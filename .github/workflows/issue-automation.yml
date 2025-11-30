@@ -15,6 +15,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Debug echo
+        run: echo "Workflow triggered for issue ${{ github.event.issue.number }}"
+
       - name: Ensure labels exist
         uses: actions/github-script@v7
         with:
@@ -283,7 +286,7 @@ Detailed description of ${taskName.toLowerCase()} for the epic "${parentTitle}".
             const isFirstIssue = ${{ steps.check-first-issue.outputs.result }};
 
             let commentBody = '';
-            const welcome = isFirstIssue ? '\n\n👋 Welcome! Thank you for your first contribution to this repository!' : '';
+            const welcome = isFirstIssue ? '\n\n\ud83d\udc4b Welcome! Thank you for your first contribution to this repository!' : '';
 
             if (labels.includes('bug')) {
               commentBody = `## Bug Report Guidelines
